@@ -11,7 +11,6 @@
 ;------------------------------------------------------------------------
 
 #SingleInstance force ; Forces the program to only run one instance at a time.
-
 IniRead, dPi, preferences.ini, Shortcuts, dPi, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Display the digits of Pi."
 
 IniRead, qPi, preferences.ini, Shortcuts, qPi, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Quiz yourself with specified offset and quantity."
@@ -35,10 +34,89 @@ IniRead, sTimer, preferences.ini, Shortcuts, sTimer, %A_Space% ; Reads the keybo
 IniRead, ePi, preferences.ini, Shortcuts, ePi, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Quit this application."
 
 IniRead, rPi, preferences.ini, Shortcuts, rPi, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Restart this script and reset the offset and quantity."
+IniRead, hPi, preferences.ini, Shortcuts, hPi, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Show a help dialog of the keyboard shortcuts."
 
-IniRead, piOffset, preferences.ini, Data, Offset, %A_Space% ; Reads the saved offset from the INI file.
+If dPi = ; Checks if our first keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #p, preferences.ini, Shortcuts, dPi ; Writes the default shortcut to the file.
+IniRead, dPi, preferences.ini, Shortcuts, dPi, %A_Space% ; Reread after reconfiguration.
+}
 
-IniRead, piDigitQty, preferences.ini, Data, Quantity, %A_Space% ; Reads the saved quantity from the INI file.
+If qPi = ; Checks if our second keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #+p, preferences.ini, Shortcuts, qPi ; Writes the default shortcut to the file.
+IniRead, qPi, preferences.ini, Shortcuts, qPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If fPi = ; Checks if our third keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #!p, preferences.ini, Shortcuts, fPi ; Writes the default shortcut to the file.
+IniRead, fPi, preferences.ini, Shortcuts, fPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If bPi = ; Checks if our fourth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #!+p, preferences.ini, Shortcuts, bPi ; Writes the default shortcut to the file.
+IniRead, bPi, preferences.ini, Shortcuts, bPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If pPi = ; Checks if our fifth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, ^#+p, preferences.ini, Shortcuts, pPi ; Writes the default shortcut to the file.
+IniRead, pPi, preferences.ini, Shortcuts, pPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If gPi = ; Checks if our sixth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, ^#p, preferences.ini, Shortcuts, gPi ; Writes the default shortcut to the file.
+IniRead, gPi, preferences.ini, Shortcuts, gPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If nPi = ; Checks if our seventh keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, ^!#+p, preferences.ini, Shortcuts, nPi ; Writes the default shortcut to the file.
+IniRead, nPi, preferences.ini, Shortcuts, nPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If cPi = ; Checks if our eighth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, ^#+i, preferences.ini, Shortcuts, cPi ; Writes the default shortcut to the file.
+IniRead, cPi, preferences.ini, Shortcuts, cPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If mTimer = ; Checks if our nineth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #Home, preferences.ini, Shortcuts, mTimer ; Writes the default shortcut to the file.
+IniRead, mTimer, preferences.ini, Shortcuts, mTimer, %A_Space% ; Reread after reconfiguration.
+}
+
+If sTimer = ; Checks if our tenth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #+Home, preferences.ini, Shortcuts, sTimer ; Writes the default shortcut to the file.
+IniRead, sTimer, preferences.ini, Shortcuts, sTimer, %A_Space% ; Reread after reconfiguration.
+}
+
+If ePi = ; Checks if our eleventh keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #i, preferences.ini, Shortcuts, ePi ; Writes the default shortcut to the file.
+IniRead, ePi, preferences.ini, Shortcuts, ePi, %A_Space% ; Reread after reconfiguration.
+}
+
+If rPi = ; Checks if our twelfth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #+i, preferences.ini, Shortcuts, rPi ; Writes the default shortcut to the file.
+IniRead, rPi, preferences.ini, Shortcuts, rPi, %A_Space% ; Reread after reconfiguration.
+}
+
+If hPi = ; Checks if our thirteenth keyboard shortcut reads blank from the file (Accidental deletion):
+{
+IniWrite, #/, preferences.ini, Shortcuts, hPi ; Writes the default shortcut to the file.
+IniRead, hPi, preferences.ini, Shortcuts, hPi, %A_Space% ; Reread after reconfiguration.
+}
+
+IniRead, piOffset, preferences.ini, Data, Offset, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Quit this application."
+
+IniRead, piDigitQty, preferences.ini, Data, Quantity, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Restart this script and reset the offset and quantity."
 
 global piQty ; Makes the variable global. You cannot use this variable in a shortcut consistently without this.
 
@@ -48,9 +126,7 @@ global piDigitQty ; Makes the variable global. You cannot use this variable in a
 
 global pTitle ; Makes the variable global. You cannot use this variable in a shortcut consistently without this.
 
-piQty := piOffset ; Remember the STARTING offset in this variable. This will not change as the offset variable changes because it's set initially. Important for a function shown later.
-
-Hotkey, %dPi%, dPi, On ; Since I am now letting people modify an INI file where hotkeys are stored, I have to put that hotkey in a variable so it can be used as a function, which is stupid. Corresponding hotkey found in INI file.
+piQty := piOffset ; Remembers the STARTING offset in this variable. This will not change as the offset variable changes because it's set initially. Important for a function shown later.
 
 Hotkey, %qPi%, qPi, On ; Turns this variable into a hotkey.
 
