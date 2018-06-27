@@ -415,3 +415,37 @@ IniWrite, %A_Space%, preferences.ini, Data, Quantity ; Resets the quantity to no
 reload ; Restarts the script.
 } ; Ending of keyboard shortcut function.
 return ; Needed at the end of every shortcut.
+
+hPi(){ ; Checks if you press the keyboard shortcut, according to the INI file.
+msgbox, ; Display a message box, which shows all the default shortcuts. It's listed in multiple lines and the parentheses indicate it's all part of the message.
+( ; Beginning parentheses.
+Default shortcuts (Also in video description featuring this program):
+
+Display the digits of Pi: Win+P
+
+Quiz yourself with specified offset and quantity: Win+Shift+P
+
+Navigate forward x amount of digits: Win+Alt+P
+
+Navigate backward x amount of digits: Win+Shift+Alt+P
+
+Change the quantity of digits displayed or printed: Ctrl+Win+Shift+P
+
+Type group(s) of specified digits as text: Ctrl+Win+P
+
+Navigate back to the saved offset and quantity: Ctrl+Alt+Win+Shift+P
+
+Change the saved offset to the current offset: Ctrl+Win+Shift+I
+
+Run the minutes based timer: Win+Home
+
+Run the seconds based timer: Win+Shift+Home
+
+Quit this application: Win+I
+
+Restart this script and reset the offset and quantity: Win+Shift+I
+
+Show this help dialog: Win+? (No shift)
+) ; Ending parentheses
+} ; Ending of keyboard shortcut function.
+return ; Needed at the end of every shortcut.

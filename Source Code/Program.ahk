@@ -370,3 +370,4 @@ Restart this script and reset the offset and quantity: Win+Shift+I
 Show this help dialog: Win+? (No shift)
 )
 }
+return
