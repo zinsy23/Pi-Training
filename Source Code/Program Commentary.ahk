@@ -84,7 +84,7 @@ IniWrite, ^#+i, preferences.ini, Shortcuts, cPi ; Writes the default shortcut to
 IniRead, cPi, preferences.ini, Shortcuts, cPi, %A_Space% ; Reread after reconfiguration.
 }
 
-If mTimer = ; Checks if our nineth keyboard shortcut reads blank from the file (Accidental deletion):
+If mTimer = ; Checks if our ninth keyboard shortcut reads blank from the file (Accidental deletion):
 {
 IniWrite, #Home, preferences.ini, Shortcuts, mTimer ; Writes the default shortcut to the file.
 IniRead, mTimer, preferences.ini, Shortcuts, mTimer, %A_Space% ; Reread after reconfiguration.
@@ -114,9 +114,9 @@ IniWrite, #/, preferences.ini, Shortcuts, hPi ; Writes the default shortcut to t
 IniRead, hPi, preferences.ini, Shortcuts, hPi, %A_Space% ; Reread after reconfiguration.
 }
 
-IniRead, piOffset, preferences.ini, Data, Offset, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Quit this application."
+IniRead, piOffset, preferences.ini, Data, Offset, %A_Space% ; Reads the offset from the INI file. 
 
-IniRead, piDigitQty, preferences.ini, Data, Quantity, %A_Space% ; Reads the keyboard shortcut from the INI file. Mapped for "Restart this script and reset the offset and quantity."
+IniRead, piDigitQty, preferences.ini, Data, Quantity, %A_Space% ; Reads the quantity from the INI file. 
 
 global piQty ; Makes the variable global. You cannot use this variable in a shortcut consistently without this.
 
