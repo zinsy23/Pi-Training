@@ -11,7 +11,7 @@ Here's a tutorial of how to use it (https://www.youtube.com/watch?v=rDF4DGBxWOA)
 
 ![Pi Training Tutorial](https://img.youtube.com/vi/rDF4DGBxWOA/mqdefault.jpg)
 
-Running it may have permission issues, so here's 3 workarounds (included in tutuorial)
+Running it may have permission issues, so here's 3 workarounds (included in tutorial)
 (https://www.youtube.com/watch?v=BOauaDvO_AI):
 
 ![3 Workarounds](https://img.youtube.com/vi/BOauaDvO_AI/mqdefault.jpg)
